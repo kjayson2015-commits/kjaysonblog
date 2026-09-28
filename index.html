@@ -346,6 +346,60 @@ body{transition:background-color .2s}
   .admin.editing .ed-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
   .admin.editing .ed-side{min-height:0;overflow-y:auto;align-content:start;padding:0 4px 4px 0;overscroll-behavior:contain}
 }
+
+/* ---------- AI helper (dashboard) ---------- */
+.ai-note{margin-bottom:10px}
+.ai-acts{display:flex;flex-wrap:wrap;gap:6px}
+.ai-acts .btn{padding:6px 12px;font-size:12.5px}
+.ai-hint{margin-top:10px}
+.ai-out{margin-top:12px;border:1px solid var(--accent);border-radius:8px;background:var(--surface);overflow:hidden}
+.ai-out-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 10px;background:var(--accent-soft);color:var(--accent-text);font-size:12.5px}
+.ai-out .prose{font-size:14px;line-height:1.6;max-height:260px;overflow-y:auto;padding:10px 12px}
+.ai-out .prose h2{font-size:17px}.ai-out .prose h3{font-size:15px}
+.ai-out-acts{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;border-top:1px solid var(--line)}
+.ai-busy{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:13px;color:var(--muted)}
+.ai-dots{display:inline-flex;gap:3px}
+.ai-dots i{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:aidot 1s infinite ease-in-out}
+.ai-dots i:nth-child(2){animation-delay:.15s}.ai-dots i:nth-child(3){animation-delay:.3s}
+@keyframes aidot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){.ai-dots i{animation:none;opacity:.7}}
+.seo-ai{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.seo-ai .hint{flex:1}
+
+/* ---------- visitor chat ---------- */
+.chat-launch{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:10px;padding:5px 16px 5px 5px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font:14px var(--ui);cursor:pointer;box-shadow:0 6px 20px rgba(16,24,40,.14),0 1px 3px rgba(16,24,40,.08)}
+.chat-launch img{width:36px;height:36px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--surface),0 0 0 3px var(--accent)}
+.chat-launch:hover{border-color:var(--accent);color:var(--accent-text)}
+.chat{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:31;width:min(380px,calc(100vw - 36px));height:min(560px,calc(100dvh - 90px));display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(16,24,40,.22),0 2px 6px rgba(16,24,40,.08);overflow:hidden;transform-origin:bottom right;animation:chatin .18s ease-out}
+@keyframes chatin{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.chat{animation:none}}
+.chat-head{display:flex;align-items:center;gap:12px;padding:14px 14px 12px 16px;border-bottom:1px solid var(--line)}
+.chat-head img{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none}
+.chat-head div{flex:1;min-width:0}
+.chat-head strong{display:block;font:400 16px/1.25 var(--ui)}
+.chat-head span{display:block;font-size:12.5px;color:var(--muted)}
+.chat-x{width:34px;height:34px;border:0;border-radius:50%;background:var(--surface-2);color:var(--ink-2);cursor:pointer;font-size:18px;line-height:1;flex:none}
+.chat-x:hover{color:var(--accent-text)}
+.chat-log{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--bg)}
+.msg{max-width:88%;font-size:14.5px;line-height:1.55;overflow-wrap:anywhere}
+.msg p{margin:0 0 .6em}.msg p:last-child{margin:0}
+.msg.me{align-self:flex-end;background:var(--accent);color:var(--accent-ink);padding:9px 13px;border-radius:14px 14px 4px 14px}
+.msg.bot{align-self:flex-start;background:var(--surface);color:var(--ink);padding:10px 13px;border-radius:14px 14px 14px 4px;box-shadow:var(--shadow)}
+.msg.err{align-self:flex-start;background:var(--warn-soft);color:var(--warn-ink);padding:9px 13px;border-radius:10px;font-size:13.5px}
+.msg-src{display:flex;flex-direction:column;gap:5px;margin-top:10px;padding-top:9px;border-top:1px solid var(--line)}
+.msg-src a{font-size:13px;text-decoration:none;color:var(--accent-text)}
+.msg-src a:hover{text-decoration:underline}
+.msg-src a::before{content:"Read: ";color:var(--muted)}
+.chat-form{display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--surface)}
+.chat-form input{flex:1;min-width:0;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface-2);font-size:15px}
+.chat-form input:focus{outline:none;border-color:var(--accent);background:var(--surface)}
+.chat-form .btn{padding:8px 16px}
+.chat-note{margin:0;padding:0 16px 8px;font-size:11.5px;color:var(--muted);background:var(--surface);text-align:center}
+@media (max-width:600px){
+  .chat{right:0;left:0;bottom:0;width:100%;height:82dvh;border-radius:18px 18px 0 0;border-bottom:0}
+  .chat-launch span{display:none}
+  .chat-launch{padding:5px}
+}
 </style>
 <script src="config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>
@@ -425,6 +479,8 @@ const S = {
   db: null, user: null, loaded: false, dbError: false,
   pendingDelete: null, editing: null, dirty: false, saving: false,
   lastRange: null, pendingNav: null, edConfirmTrash: false,
+  ai: {busy: false, out: null},
+  chat: {open: false, busy: false, msgs: []},
 };
 const titleOf = p => (p.title || '').trim() || '(no title)';
 const categories = () => {
@@ -783,6 +839,18 @@ function renderEditor(post) {
       </div>
       <aside class="ed-side">
         <section class="panel"><h2>Publish</h2><div class="panel-body" id="pubbox"></div></section>
+        <section class="panel"><h2>Writing helper</h2><div class="panel-body">
+          <label class="sr" for="ai-note">What should the helper do?</label>
+          <textarea class="input ai-note" id="ai-note" rows="3" placeholder="Optional: what to write about, or how to change the text (e.g. make it friendlier)"></textarea>
+          <div class="ai-acts">
+            <button type="button" class="btn" data-act="ai-run" data-kind="draft">Write a draft</button>
+            <button type="button" class="btn" data-act="ai-run" data-kind="continue">Continue</button>
+            <button type="button" class="btn" data-act="ai-run" data-kind="improve">Improve</button>
+            <button type="button" class="btn" data-act="ai-run" data-kind="fix">Fix grammar</button>
+          </div>
+          <p class="hint ai-hint">Improve and Fix grammar work on the text you've selected, or the whole post if nothing is selected. You'll see the result before anything changes.</p>
+          <div id="ai-out" aria-live="polite"></div>
+        </div></section>
         <section class="panel"><h2>Category</h2><div class="panel-body">
           <label class="sr" for="ed-cat">Category</label>
           <input class="input" id="ed-cat" list="cat-list" placeholder="e.g. Updates" autocomplete="off">
@@ -790,6 +858,7 @@ function renderEditor(post) {
           <p class="hint" style="margin-top:6px">Pick one you've used or type a new one.</p>
         </div></section>
         <section class="panel"><h2>Search engines</h2><div class="panel-body">
+          <div class="seo-ai"><p class="hint">Let the helper fill these in from your post.</p><button type="button" class="btn" data-act="ai-seo" id="ai-seo-btn">Fill in for me</button></div>
           <div class="field"><label for="ed-focus">Focus phrase</label><input class="input" id="ed-focus" placeholder="e.g. how to read a court transcript" autocomplete="off"><p class="hint">The words you want people to find this post with on Google.</p></div>
           <div class="field"><label for="ed-excerpt">Search description</label><textarea class="input" id="ed-excerpt" rows="3"></textarea><p class="hint"><span id="ed-desc-count">0</span>/155 characters. Also shown as the summary on your home page.</p></div>
           <div class="serp"><p class="serp-label">Google preview</p><p class="serp-url" id="serp-url"></p><p class="serp-title" id="serp-title"></p><p class="serp-desc" id="serp-desc"></p></div>
@@ -891,7 +960,7 @@ function openEditor(post, src) {
     ? {id: post.id, src, publishedAt: post.publishedAt || null, authorId: null, createdAt: post.createdAt || null,
        slugTouched: src === 'posts' || (!!post.slug && post.slug !== slugify(post.title))}
     : {id: newId(), src: null, publishedAt: null, authorId: null, createdAt: null};
-  S.dirty = false; S.edConfirmTrash = false; S.pendingNav = null; S.lastRange = null;
+  S.dirty = false; S.edConfirmTrash = false; S.pendingNav = null; S.lastRange = null; S.ai = {busy: false, out: null};
   S.view = 'admin'; S.admin.name = 'edit';
   show(); renderAdmin(post); window.scrollTo(0, 0);
 }
@@ -926,11 +995,133 @@ async function saveEditor(mode) {
   finally { S.saving = false; renderPubBox(); renderAdminNav(); }
 }
 
+/* ---------- AI helper (runs in the blog-ai Supabase function) ---------- */
+async function askAI(body) {
+  if (!sb) throw new Error('Finish the setup in config.js first.');
+  const {data, error} = await sb.functions.invoke('blog-ai', {body});
+  if (error) {
+    let m = "The AI helper isn't reachable. Check that the blog-ai function is deployed (AI-SETUP.md).";
+    try { const j = await error.context.json(); if (j && j.error) m = j.error; } catch {}
+    throw new Error(m);
+  }
+  if (data && data.error) throw new Error(data.error);
+  return data;
+}
+const AI_LABEL = {draft: 'Draft', continue: 'Next part', improve: 'Improved version', fix: 'Corrected version'};
+function renderAiOut() {
+  const box = $('#ai-out'); if (!box) return;
+  document.querySelectorAll('[data-act="ai-run"],#ai-seo-btn').forEach(b => b.disabled = S.ai.busy);
+  if (S.ai.busy) { box.innerHTML = `<div class="ai-busy"><span class="ai-dots" aria-hidden="true"><i></i><i></i><i></i></span>${esc(S.ai.busy)}</div>`; return; }
+  const o = S.ai.out;
+  if (!o) { box.innerHTML = ''; return; }
+  const apply = o.kind === 'continue' ? 'Add to the end'
+    : o.kind === 'draft' ? (o.bodyEmpty ? 'Use this draft' : 'Add at cursor')
+    : o.range ? 'Replace selection' : 'Replace whole post';
+  box.innerHTML = `<div class="ai-out">
+    <div class="ai-out-head"><span>${esc(AI_LABEL[o.kind] || 'Result')}</span></div>
+    <div class="prose">${o.html}</div>
+    <div class="ai-out-acts"><button type="button" class="btn btn-primary" data-act="ai-apply">${apply}</button><button type="button" class="btn" data-act="ai-run" data-kind="${o.kind}">Try again</button><button type="button" class="btn" data-act="ai-discard">Discard</button></div>
+  </div>`;
+}
+async function runAI(kind) {
+  if (S.ai.busy) return;
+  const body = $('#ed-body'); if (!body) return;
+  const note = $('#ai-note').value.trim(), title = $('#ed-title').value.trim();
+  let html = '', range = null, context = '';
+  if (kind === 'improve' || kind === 'fix') {
+    const r = S.lastRange;
+    if (r && !r.collapsed && body.contains(r.commonAncestorContainer) && r.toString().trim()) {
+      range = r.cloneRange();
+      const d = document.createElement('div'); d.appendChild(range.cloneContents()); html = d.innerHTML;
+      context = body.innerHTML;
+    } else html = body.innerHTML;
+  } else if (kind === 'continue') html = body.innerHTML;
+  S.ai.busy = kind === 'fix' ? 'Checking spelling and grammar…' : kind === 'draft' ? 'Writing a draft…' : 'Writing…';
+  S.ai.out = null; renderAiOut();
+  try {
+    const res = await askAI({mode: 'write', action: kind, title, note, html, context});
+    const clean = sanitize(res.html || '');
+    if (!clean) throw new Error('The helper came back empty. Try again or add more detail.');
+    S.ai.out = {kind, html: clean, range, bodyEmpty: !(body.textContent || '').trim()};
+  } catch (err) { toast(err.message); }
+  S.ai.busy = false; renderAiOut();
+}
+function applyAI() {
+  const o = S.ai.out, body = $('#ed-body'); if (!o || !body) return;
+  if (o.kind === 'continue') body.insertAdjacentHTML('beforeend', o.html);
+  else if (o.kind === 'draft') {
+    if (o.bodyEmpty || !(body.textContent || '').trim()) body.innerHTML = o.html;
+    else { restoreRange(); if (!document.execCommand('insertHTML', false, o.html)) body.insertAdjacentHTML('beforeend', o.html); }
+  } else if (o.range && body.contains(o.range.commonAncestorContainer)) {
+    body.focus(); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(o.range);
+    if (!document.execCommand('insertHTML', false, o.html)) { o.range.deleteContents(); const t = document.createElement('template'); t.innerHTML = o.html; o.range.insertNode(t.content); }
+  } else body.innerHTML = o.html;
+  S.ai.out = null; S.dirty = true; renderAiOut(); updateWords(); updateSeo();
+  toast(o.kind === 'fix' ? 'Corrections added.' : 'Added to your post. Remember to save.');
+}
+async function fillSeo() {
+  if (S.ai.busy) return;
+  S.ai.busy = 'Working out search settings…'; renderAiOut();
+  try {
+    const r = await askAI({mode: 'seo', title: $('#ed-title').value.trim(), html: $('#ed-body').innerHTML, categories: allCats()});
+    if (r.focus) $('#ed-focus').value = r.focus;
+    if (r.description) $('#ed-excerpt').value = r.description.length > 155 ? r.description.slice(0, 154).replace(/\s+\S*$/, '') + '…' : r.description;
+    if (r.category) $('#ed-cat').value = r.category;
+    if (r.slug && S.editing.src !== 'posts') { $('#ed-slug').value = slugify(r.slug); S.editing.slugTouched = true; }
+    S.dirty = true; updateSeo();
+    toast('Search settings filled in. Check the wording, then save.');
+  } catch (err) { toast(err.message); }
+  S.ai.busy = false; renderAiOut();
+}
+
+/* ---------- visitor chat ---------- */
+const chatOn = () => !!sb && CFG.aiChat !== false;
+function paras(t) { return String(t || '').split(/\n+/).filter(s => s.trim()).map(s => `<p>${esc(s)}</p>`).join(''); }
+function renderChat() {
+  let root = $('#chat-root');
+  if (!root) { root = document.createElement('div'); root.id = 'chat-root'; document.body.appendChild(root); }
+  const visible = chatOn() && S.view === 'site' && S.route.name !== 'login';
+  if (!visible) { root.innerHTML = ''; return; }
+  const C = S.chat, name = S.settings.title || 'this blog';
+  if (!C.open) {
+    root.innerHTML = `<button type="button" class="chat-launch" data-act="chat-open" aria-label="Ask a question about this blog"><img src="${LOGO}" alt=""><span>Ask about my posts</span></button>`;
+    return;
+  }
+  const log = C.msgs.map(m => m.role === 'user' ? `<div class="msg me">${paras(m.text)}</div>`
+    : m.role === 'err' ? `<div class="msg err" role="alert">${esc(m.text)}</div>`
+    : `<div class="msg bot">${paras(m.text)}${m.sources && m.sources.length ? `<div class="msg-src">${m.sources.map(s => `<a href="${esc(BASE + 'posts/' + encodeURIComponent(s.key) + '/')}" data-act="post" data-id="${esc(s.id)}">${esc(s.title)}</a>`).join('')}</div>` : ''}</div>`).join('');
+  const had = $('#chat-q'), draft = had ? had.value : '';
+  root.innerHTML = `<section class="chat" role="dialog" aria-label="Ask about ${esc(name)}">
+    <header class="chat-head"><img src="${LOGO}" alt=""><div><strong>Ask about ${esc(name)}</strong><span>Answers come from the published posts</span></div><button type="button" class="chat-x" data-act="chat-close" aria-label="Close chat">×</button></header>
+    <div class="chat-log" id="chat-log" aria-live="polite">
+      <div class="msg bot"><p>Hi! Ask me anything about what's written here and I'll point you to the right post.</p></div>
+      ${log}
+      ${C.busy ? '<div class="msg bot"><span class="ai-dots" aria-label="Thinking"><i></i><i></i><i></i></span></div>' : ''}
+    </div>
+    <form class="chat-form" id="chat-form"><label class="sr" for="chat-q">Your question</label><input id="chat-q" maxlength="500" autocomplete="off" placeholder="Type a question" value="${esc(draft)}"><button class="btn btn-primary" type="submit" ${C.busy ? 'disabled' : ''}>Send</button></form>
+    <p class="chat-note">AI answers can be wrong. Check the post itself.</p>
+  </section>`;
+  const l = $('#chat-log'); l.scrollTop = l.scrollHeight;
+}
+async function sendChat(q) {
+  const C = S.chat; if (C.busy || !q) return;
+  C.msgs = C.msgs.filter(m => m.role !== 'err');
+  C.msgs.push({role: 'user', text: q}); C.busy = true; renderChat();
+  const i = $('#chat-q'); if (i) { i.value = ''; i.focus(); }
+  try {
+    const r = await askAI({mode: 'chat', messages: C.msgs.map(m => ({role: m.role, text: m.text}))});
+    C.msgs.push({role: 'model', text: r.answer || "I couldn't find an answer to that on the blog.", sources: r.sources || []});
+  } catch (err) { C.msgs.pop(); C.msgs.push({role: 'err', text: err.message}); if (i) i.value = q; }
+  C.busy = false; renderChat();
+  const i2 = $('#chat-q'); if (i2 && innerWidth > 600) i2.focus();
+}
+
 /* ---------- navigation ---------- */
 function show() {
   $('#site').hidden = S.view !== 'site';
   $('#admin').hidden = S.view !== 'admin';
   renderAdminBar();
+  renderChat();
 }
 function guard(fn) {
   if (S.view === 'admin' && S.admin.name === 'edit' && S.dirty) { S.pendingNav = fn; renderLeaveBar(); window.scrollTo(0, 0); return; }
@@ -980,7 +1171,7 @@ document.addEventListener('click', async ev => {
     case 'home': return guard(() => goSite({name: 'home'}));
     case 'login': return goSite({name: 'login'});
     case 'logout': return guard(async () => { await sb.auth.signOut(); S.canEdit = false; S.me = null; S.drafts = []; goSite({name: 'home'}); toast('Logged out.'); refresh(); });
-    case 'post': { const p = S.posts.find(x => x.id === id); return guard(() => goSite({name: 'post', key: p ? postKey(p) : id})); }
+    case 'post': { if (a.closest('#chat-root') && innerWidth <= 600) S.chat.open = false; const p = S.posts.find(x => x.id === id); return guard(() => goSite({name: 'post', key: p ? postKey(p) : id})); }
     case 'cat': return guard(() => goSite({name: 'category', cat: a.dataset.cat}));
     case 'more': S.route.limit = (S.route.limit || 6) + 6; return renderSite();
     case 'admin': return guard(() => goAdmin(a.dataset.page));
@@ -1010,10 +1201,17 @@ document.addEventListener('click', async ev => {
     }
     case 'leave-yes': { const fn = S.pendingNav; S.pendingNav = null; S.dirty = false; if (fn) fn(); return; }
     case 'leave-no': S.pendingNav = null; return renderLeaveBar();
+    case 'ai-run': return runAI(a.dataset.kind);
+    case 'ai-apply': return applyAI();
+    case 'ai-discard': S.ai.out = null; return renderAiOut();
+    case 'ai-seo': return fillSeo();
+    case 'chat-open': S.chat.open = true; renderChat(); if (innerWidth > 600) $('#chat-q')?.focus(); return;
+    case 'chat-close': S.chat.open = false; renderChat(); $('.chat-launch')?.focus(); return;
   }
 });
 document.addEventListener('submit', async ev => {
   const f = ev.target; ev.preventDefault();
+  if (f.id === 'chat-form') return sendChat($('#chat-q').value.trim());
   if (f.id === 'site-search') {
     const q = $('#site-q').value.trim();
     return q ? goSite({name: 'search', q}) : goSite({name: 'home'});
@@ -1087,6 +1285,7 @@ document.addEventListener('keydown', ev => {
     ev.preventDefault(); saveEditor(S.editing.src === 'posts' ? 'publish' : 'draft');
   }
   if (ev.key === 'Escape' && !$('#ed-linkbar')?.hidden) { $('#ed-linkbar').hidden = true; restoreRange(); }
+  if (ev.key === 'Escape' && S.chat.open) { S.chat.open = false; renderChat(); $('.chat-launch')?.focus(); }
 });
 
 /* ---------- data (Supabase) ---------- */
