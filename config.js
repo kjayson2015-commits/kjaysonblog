@@ -4,4 +4,5 @@ window.BLOG_CONFIG = {
   supabaseUrl: 'https://viyipqfydmftcpdvntqf.supabase.co',
   supabaseKey: 'sb_publishable_bnFIkrjmcDX9xi3f1NAxLQ_K9fbTIhL',
   siteUrl: 'https://kjayson.online',                      // your blog's web address, used for Google (no slash at the end)
+  aiChat: true,                                           // the "Ask about my posts" chat for visitors. Set to false to hide it.
 };
